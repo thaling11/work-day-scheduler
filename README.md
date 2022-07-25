@@ -18,4 +18,8 @@ This project is a simple calendar application that allows a user to save events 
 
 The following animation demonstrates the application functionality:
 
-![Screenshot-1](./Assets/images/codingquiz.jpeg)
+![Screenshot-1](./assets/images/work-day-scheduler.jpeg)
+
+## Application Link
+
+https://thaling11.github.io/work-day-scheduler/

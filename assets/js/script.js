@@ -24,7 +24,6 @@ var timeBlocks = document.querySelector(".time-block");
 var saveBtn = document.querySelector(".saveBtn");
 var container = document.querySelector(".container");
 
-// var buttonParent = document.querySelector(".container")
 
 //header time counter
 function updateTime() {
@@ -59,9 +58,6 @@ setInterval(checkTime(), 1000 * 60 * 1);
 
 container.addEventListener("click", function (event) {
   event.preventDefault();
-  console.log(event);
-  // console.log(event.target.previousElementSibling.value);
-  // console.log(event.path[1].children[0].innerText);
   if (event.target.nodeName === "BUTTON") {
     saveInput(
       event.target.previousElementSibling.value,
@@ -73,52 +69,40 @@ container.addEventListener("click", function (event) {
 
 // Save input to local storage
 function saveInput(x, y) {
-  // Save related form data as an object
-  var temporary = [];
   var time = y;
   var text = x;
-  var scheduleInput = { time: time, text: text };
-
-  if (JSON.parse(localStorage.getItem("scheduleInput"))) {
-    temporary = JSON.parse(localStorage.getItem("scheduleInput"));
-
-    const newArr = temporary.filter((object) => {
-      return object.time !== time;
-    });
-    temporary = newArr;
-  }
-  temporary.push(scheduleInput);
-  // Use .setItem() to store object in storage and JSON.stringify to convert it as a string
-  localStorage.setItem("scheduleInput", JSON.stringify(temporary));
+  localStorage.setItem(time, text);
 }
 
-var scheduleInput = [];
-
+// Save text content when refresh page
 function renderInput() {
-  // Use JSON.parse() to convert text to JavaScript object
-  var lastInput = JSON.parse(localStorage.getItem("scheduleInput"));
-  if (lastInput) {
-    // Check if data is returned, if not exit out of the function
-    lastInput.forEach((element) => {
-      var checkTime = element.time;
-      var checkText = element.text;
-      for (let i = 0; i < lastInput.length; i++) {
-        var checkID = document.querySelectorAll(".hour")[i].textContent;
-        console.log(checkID);
-        if (checkTime == checkID) {
-          timeBlocks.textContent = checkText;
-        }
-      }
-    });
-  }
+  var of9 = document.getElementById("09") 
+  of9.textContent = localStorage.getItem("9:00 AM");
+
+  var of10 = document.getElementById("10") 
+  of10.textContent = localStorage.getItem("10:00 AM");
+
+  var of11 = document.getElementById("11") 
+  of11.textContent = localStorage.getItem("11:00 AM");
+
+  var of12 = document.getElementById("12") 
+  of12.textContent = localStorage.getItem("12:00 PM");
+
+  var of13 = document.getElementById("13") 
+  of13.textContent = localStorage.getItem("1:00 PM");
+
+  var of14 = document.getElementById("14") 
+  of14.textContent = localStorage.getItem("2:00 PM");
+
+  var of15 = document.getElementById("15") 
+  of15.textContent = localStorage.getItem("3:00 PM");
+
+  var of16 = document.getElementById("16") 
+  of16.textContent = localStorage.getItem("4:00 PM");
+
+  var of17 = document.getElementById("17") 
+  of17.textContent = localStorage.getItem("5:00 PM");
 }
-function savePage() {
- $("#09").text(localStorage.getItem(scheduleInput));
- $("#10").text(localStorage.getItem(scheduleInput));
-};
-savePage();
-//getItem 8 separate times text content = localStorage.getItem(scheduleInput)
-//target hour 9
 
 function init() {
   renderInput();
